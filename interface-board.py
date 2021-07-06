@@ -1,12 +1,19 @@
 from tkinter import *
 
 # Creation de premiere fenetre
-windows = Tk()
+window = Tk()
 
 # personalisation de la fenetre
-windows.title ("Coleoptera")
-windows.geometry("480x360")
-windows.minsize (480,360)
+window.title ("Coleoptera")
+window.geometry("1280x720")
+window.minsize (480,360)
+window.iconbitmap("logo-coleoptera.ico")
+window.config(background='#B0DEFF')
 
-# afficher
-windows.mainloop()
+# ajout du texte
+label_title = Label(window, text="Coleoptera voit les fichiers inutles et vous averti", font=("Calibri", 20), bg='#B0DEFF', fg='white')
+label_title.grid(row=0,column=0)
+
+
+# afficher la fenetre
+window.mainloop()
