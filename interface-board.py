@@ -1,6 +1,19 @@
 from tkinter import *
 from tkinter.filedialog import *
 import webbrowser
+import logging
+import threading
+import datetime
+import queue
+import logging
+import signal
+import time
+import threading
+import tkinter as tk
+from tkinter.scrolledtext import ScrolledText
+from tkinter import ttk, VERTICAL, HORIZONTAL, N, S, E, W
+
+
 
 #Les Fonctions==============================================================================
 def open_github():
@@ -93,10 +106,8 @@ frame_c.pack(expand=YES)
 label_title_b = Label(root, text="Version Alpha test", font=("Calibri", 14), bg='#292929', fg='white', bd=1)
 label_title_b.pack(side=BOTTOM)
 
-
 # Afficher la page laisser à la fin ============================================================
 root.mainloop()
-
 
 
 
