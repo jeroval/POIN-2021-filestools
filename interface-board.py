@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter.filedialog import *
 
 import webbrowser
 
@@ -65,18 +66,31 @@ bouton_c.pack()
 frame_b.pack(side=LEFT)
 
 
-#Creation de la boite à réglages frame c
+#=============Creation de la boite à réglages frame c===========
 frame_c = Frame(root, bg='black')
 
 folder = Label(frame_c, text="Définissez l'emplacement à analyser : Exemple C:/Users/Jeroval/Documents", font=("Calibri", 13))
-input_e = Entry(frame_c)
+input_a = Entry(frame_c)
 folder.pack()
-input_e.pack()
+input_a.pack()
+
+size = Label(frame_c, text="Taille minimale à prendre en compte en Mo : Exemple : 100", font=("Calibri", 13))
+input_b = Entry(frame_c)
+size.pack()
+input_b.pack()
+
+age = Label(frame_c, text="Fichier non ouvert depuis plus tant de jours : Exemple : 365", font=("Calibri", 13))
+input_c = Entry(frame_c)
+age.pack()
+input_c.pack()
 
 
-
-#Fermeture de la boite à réglages C
 frame_c.pack(expand=YES)
+#==============Fermeture de la boite à réglages C=============
+
+
+
+
 
 
 # Note sur la version de l'application
