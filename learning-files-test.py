@@ -11,13 +11,8 @@ from tkinter import ttk, VERTICAL, HORIZONTAL, N, S, E, W
 
 logger = logging.getLogger(__name__)
 
-
 class Clock(threading.Thread):
-    """Class to display the time every seconds
 
-    Every 5 seconds, the time is displayed using the logging.ERROR level
-    to show that different colors are associated to the log levels
-    """
 
     def __init__(self):
         super().__init__()
@@ -42,14 +37,6 @@ class Clock(threading.Thread):
 
 
 class QueueHandler(logging.Handler):
-    """Class to send logging records to a queue
-
-    It can be used from different threads
-    The ConsoleUi class polls this queue to display records in a ScrolledText widget
-    """
-    # Example from Moshe Kaplan: https://gist.github.com/moshekaplan/c425f861de7bbf28ef06
-    # (https://stackoverflow.com/questions/13318742/python-logging-to-tkinter-text-widget) is not thread safe!
-    # See https://stackoverflow.com/questions/43909849/tkinter-python-crashes-on-new-thread-trying-to-log-on-main-thread
 
     def __init__(self, log_queue):
         super().__init__()
@@ -60,7 +47,6 @@ class QueueHandler(logging.Handler):
 
 
 class ConsoleUi:
-    """Poll messages from a logging queue and display them in a scrolled text widget"""
 
     def __init__(self, frame):
         self.frame = frame
@@ -148,6 +134,7 @@ class App:
         root.title('Logging Handler')
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
+
         # Create the panes and frames
         vertical_pane = ttk.PanedWindow(self.root, orient=VERTICAL)
         vertical_pane.grid(row=0, column=0, sticky="nsew")
@@ -162,6 +149,7 @@ class App:
         horizontal_pane.add(console_frame, weight=1)
         third_frame = ttk.Labelframe(vertical_pane, text="Third Frame")
         vertical_pane.add(third_frame, weight=1)
+
         # Initialize all frames
         self.form = FormUi(form_frame)
         self.console = ConsoleUi(console_frame)
