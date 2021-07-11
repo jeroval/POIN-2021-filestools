@@ -1,18 +1,7 @@
 from tkinter import *
 from tkinter.filedialog import *
 import webbrowser
-import logging
-import threading
-import datetime
-import queue
-import logging
-import signal
-import time
-import threading
-import tkinter as tk
-from tkinter.scrolledtext import ScrolledText
-from tkinter import ttk, VERTICAL, HORIZONTAL, N, S, E, W
-
+from tkinter.filedialog import askopenfilename
 
 
 #Les Fonctions==============================================================================
@@ -22,6 +11,10 @@ def open_github():
 def open_dons():
     webbrowser.open_new("https://streamelements.com/jerovaljerome/tip")
 
+def analyse():
+    global logs_samples
+    can3.delete(ALL)
+    can3.create_image(700, 398, image=logs_samples)
 
 # Creation de premiere fenêtre laisser au début=============================================
 root = Tk()
@@ -57,22 +50,22 @@ frame_a.pack(side=TOP)
 frame_b = Frame(root, bg='black')
 
 # Bouton B - Lancer le scan
-bouton_b = Button (frame_b, text =" |> Démarrer l'analyse", font=("Calibri", 13), bg='#010B8B', fg='white', bd=1, relief=SUNKEN)
+bouton_b = Button (frame_b, text =" |> Démarrer l'analyse", font=("Calibri", 15), bg='#010B8B', fg='white', bd=1, relief=SUNKEN, command=analyse)
 bouton_b.pack()
 # Bouton D - Logs
-bouton_d = Button (frame_b, text ="Accès aux logs", font=("Calibri", 13), bg='#010B8B', fg='white', bd=1, relief=SUNKEN)
+bouton_d = Button (frame_b, text ="Accès aux logs", font=("Calibri", 15), bg='#010B8B', fg='white', bd=1, relief=SUNKEN)
 bouton_d.pack()
 # Bouton E - Actions
-bouton_e = Button (frame_b, text ="Résultats d'analyse", font=("Calibri", 13), bg='#010B8B', fg='white', bd=1, relief=SUNKEN)
+bouton_e = Button (frame_b, text ="Résultats d'analyse", font=("Calibri", 15), bg='#010B8B', fg='white', bd=1, relief=SUNKEN)
 bouton_e.pack()
 # Bouton F - Git
-bouton_f = Button (frame_b, text ="(!) A propos du logiciel", font=("Calibri", 13), bg='#010B8B', fg='white', bd=1, relief=SUNKEN, command=open_github)
+bouton_f = Button (frame_b, text ="(!) A propos du logiciel", font=("Calibri", 15), bg='#010B8B', fg='white', bd=1, relief=SUNKEN, command=open_github)
 bouton_f.pack()
 # Bouton G - Dons
-bouton_g = Button (frame_b, text ="Soutenez-nous ici", font=("Calibri", 13), bg='#010B8B', fg='white', bd=1, relief=SUNKEN, command=open_dons)
+bouton_g = Button (frame_b, text ="Soutenez-nous ici", font=("Calibri", 15), bg='#010B8B', fg='white', bd=1, relief=SUNKEN, command=open_dons)
 bouton_g.pack()
 # Bouton C - Quitter
-bouton_c = Button (frame_b, text ="X Quitter", font=("Calibri", 13), bg='#010B8B', fg='white', bd=1, relief=SUNKEN, command=root.destroy)
+bouton_c = Button (frame_b, text ="X Quitter", font=("Calibri", 15), bg='#010B8B', fg='white', bd=1, relief=SUNKEN, command=root.destroy)
 bouton_c.pack()
 
 frame_b.pack(side=LEFT)
@@ -100,6 +93,12 @@ input_c.pack()
 
 frame_c.pack(expand=YES)
 # Fermeture de la boite à réglages C ===========================================================
+
+
+global logs_samples
+can3 = Canvas(root, width=1280, height=720, bg='#292929')
+can3.pack(expand=YES)
+logs_samples = PhotoImage(file='sample_logs.PNG')
 
 
 # Note sur la version de l'application =========================================================
